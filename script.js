@@ -1,11 +1,21 @@
+//website heading here
+const siteHeading = document.createElement('h1');
+siteHeading.innerText = "Random User:"
+const body = document.getElementById('body');
+body.appendChild(siteHeading);
+
+//get data from server
 const loadUser = () => {
     const url = 'https://randomuser.me/api';
     fetch(url)
         .then(res => res.json())
         .then(data => displayUser(data))
 }
+// call function
+
 loadUser();
 
+// display data in Dom
 const displayUser = randomUser => {
     console.log(randomUser.results[0])
     const userContainer = document.getElementById('user-container');
@@ -21,10 +31,11 @@ const displayUser = randomUser => {
         <p>User-Age: ${randomUser.results[0].dob.age}</p>
         <p>User-Register-Date: ${randomUser.results[0].registered.date}</p>
     `}
+    
+// some styles in div ::
 
 const div = document.getElementsByTagName('div');
 for (const userContainer of div) {
     userContainer.style.border = '3px solid rgb(230, 26, 234)';
     userContainer.style.padding = '15px';
 }
-
